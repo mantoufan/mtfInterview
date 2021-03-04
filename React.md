@@ -50,4 +50,44 @@ ReactDOM.render(
   tabindex -> tabIndex  
 
 使用 JSX 指定子元素
-假如一个标签里没有内容，可使用 `/>` 闭合标签
+假如一个标签里没有内容，可使用 `/>` 闭合标签，就像 XML 语法一样
+
+JSX 防止注入攻击
+
+React DOM 在渲染所有输入内容之前，默认会进行转义  
+它可以确保在你的应用中，永远不会注入那些并非自己明确编写的内容。所有的内容在渲染之前的都被转换成了字符串。这样可以有效防止 `XSS（Cross-site-scripting，跨站脚本）` 攻击  
+
+JSX 表示对象
+Babel 会把 JSX 转译成 一个名为 `React.createElement()` 函数调用
+
+```
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+)
+```
+
+```
+const element = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, world!'
+)
+```
+
+`React.createElement()`会预先执行检查，帮助你编写无错代码，实际上它创建了一个这样的对象：
+```
+const element = {
+  type: 'h1',
+  props: {
+    className: 'greeting',
+    children: 'Hello, world!'
+  }
+}
+```
+这些对象被称为 "React 元素"。它们描述了你希望在屏幕上看到的内容。React通过读取这些对象，然后使用它们来构建 DOM 以及保持随时更新 
+
+
+## Babel 提供的语言的定义  
+Babel Syntax Highlighting 来高亮显示 ES6 和 JSX 代码  
