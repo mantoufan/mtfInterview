@@ -91,3 +91,19 @@ const element = {
 
 ## Babel 提供的语言的定义  
 Babel Syntax Highlighting 来高亮显示 ES6 和 JSX 代码  
+
+## 组件
+### key
+尽量不要使用索引作 `key`，因为索引是变化的，可能会导致错误的组件复用，如果没有指定 `key`，默认使用索引作为 `key`  
+
+### 受控组件
+<textarea> `value` 属性  
+<select> `value` 属性  
+
+受控组件指定 `value` ，会阻止用户更改输入   
+但是当 `value` 为 `null` 或 `undefined` 时，表单再次可编辑  
+
+缺点：
+需要为数据变化的每种方式都编写事件处理函数
+### 非受控组件
+使用ref
