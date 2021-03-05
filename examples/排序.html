@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>排序</title>
+</head>
+<body>
+  <script>
+    const a = [1, 2, 3, 5, 1]
+    
+
+    const sort = (a) => {
+      for(let i = 0; i < a.length - 1; i++) 
+        for (let j = 0; j < a.length - 1 - i; j++) 
+          if (a[j] > a[j + 1])[a[j], a[j + 1]] = [a[j + 1], a[j]]
+      return a
+    }
+    
+  </script>
+</body>
+</html>
