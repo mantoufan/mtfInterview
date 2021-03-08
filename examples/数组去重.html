@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数组去重</title>
+</head>
+<body>
+  <script>
+    // Set + Array.from
+    function unique (arr) {
+      return Array.from(new Set(arr))
+    }
+    // Set + ...
+    function unique (arr) {
+      return [...new Set(arr)]
+    }
+    // Object
+    function unique (arr) {
+      const h = Object.create(null)
+      arr.forEach(v => h[v] = 1)
+      return Object.keys(h).map(v => v | 0)
+    }
+    // Map
+    function unique (arr) {
+      const h = new Map
+      arr.forEach(v => h.set(v, 1))
+      return Array.from(h.keys())
+    }
+    // for + splice
+    function unique (arr) {
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = i + 1; j < arr.length; j++) {
+          if (arr[i] === arr[j]) {
+            arr.splice(j, 1)
+            j--
+          }
+        }
+      }
+      return arr
+    }
+    // sort 排序
+    function unique (arr) {
+      arr.sort()
+      for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] === arr[i + 1]) {
+          arr.splice(i, 1)
+          i--
+        }
+      }
+      return arr
+    }
+    // filter + indexOf
+    function unique (arr) {
+      return arr.filter((v, index, ar) => ar.indexOf(v) === index)
+    }
+    // filter + hasOwnProperty
+    function unique (arr) {
+      const h = {}
+      return arr.filter(v => !h.hasOwnProperty(v) && (h[v] = 1))
+    }
+    // indexOf + 辅助数组
+    function unique (arr) {
+      const r = []
+      arr.forEach(v => r.indexOf(v) === -1 && r.push(v))
+      return r
+    }
+    // includes + 辅助数组
+    function unique (arr) {
+      const r = []
+      arr.forEach(v => !r.includes(v) && r.push(v))
+      return r
+    }
+  </script>
+</body>
+</html>
