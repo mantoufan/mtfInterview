@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>判断是不是数组</title>
+</head>
+<body>
+  <script>
+    function isArray(o) {
+      return o instanceof Array
+    }
+    function isArray(o) {
+      return Array.isArray(o)
+    }
+    function isArray(o) {
+      return Object.prototype.toString.call(o) === '[object Array]'
+    }
+    function isArray(o) {
+      return Array.prototype.isPrototypeOf(o)
+    }
+  </script>
+</body>
+</html>
