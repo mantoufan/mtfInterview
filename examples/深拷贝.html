@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>深拷贝</title>
+</head>
+<body>
+  <script>
+    function deepCopy(target, h = new WeakMap) {
+      if (typeof target === 'object') {
+        if (h.has(target)) return h.get(target)
+        const newTarget = Array.isArray(target) ? [] : Object.create(null)
+        for (const key in target) {
+          newTarget[key] = deepCopy(target[key], h)
+        }
+        h.set(target, newTarget)
+        return newTarget
+      } else {
+        return target
+      }
+    }
+  </script>
+</body>
+</html>
