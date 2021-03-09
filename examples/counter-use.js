@@ -1,5 +1,10 @@
 //import  from ''
-const {count} = import('./counter.js');
-setTimeout(function () {
-  console.log('read count after 1000ms in es6 is', count)
-}, 1000)
+import('./counter.js').then(res => {
+  console.log(res)
+  console.log(res.count++)
+  const { count } = res
+  console.log(count)
+  setTimeout(function () {
+    console.log('read count after 1000ms in es6 is', count)
+  }, 1000)
+})
