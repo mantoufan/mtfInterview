@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>判断是不是数组的练习</title>
+</head>
+<body>
+  <script>
+    function isArray1(ar) {
+      return ar instanceof Array
+    }
+    function isArray2(ar) {
+      return Array.prototype.isPrototypeOf(ar)
+    }
+    function isArray3(ar) {
+      return Array.isArray(ar)
+    }
+    function isArray4(ar) {
+      return Object.prototype.toString.call(ar) === '[object Array]'
+    }
+    console.log(isArray1([]), isArray2([]), isArray3([]), isArray4([]))
+    console.log(isArray1('1'), isArray2('2'), isArray3('3'), isArray4('4'))
+  </script>
+</body>
+</html>

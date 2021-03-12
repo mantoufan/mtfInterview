@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var canvas = document.createElement('canvas')
+    var ctx = canvas.getContext('2d')
+    var txt = 'canvasfingerprinting'
+    ctx.fillText(txt, 0, 0)
+
+    console.log(canvas.toDataURL().replace('data:image/png;base64,', ''))
+  </script>
+</body>
+</html>
